@@ -32,17 +32,12 @@
       <% @suite.templates.each do |template| %>
         Evergreen.templates[<%= template.name.to_json %>] = <%= template.escaped_contents %>;
       <% end %>
-      var jasmineExecute = function() {
-        var jasmineEnv = jasmine.getEnv();
-        jasmineEnv.addReporter(new jasmine.TrivialReporter());
-        jasmineEnv.addReporter(new Evergreen.ReflectiveReporter());
-        jasmineEnv.execute();
-      };
-      if (window.addEventListener) {
-        window.addEventListener("load", jasmineExecute, false);
-      }
-      else {
-        window.attachEvent("onload", jasmineExecute);
+      if (!Evergreen.deferRun) {
+        if (window.addEventListener) {
+          window.addEventListener("load", Evergreen.run, false);
+        } else {
+          window.attachEvent("onload", Evergreen.run);
+        }
       }
     })();
   // ]]>

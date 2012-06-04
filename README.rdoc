@@ -122,6 +122,17 @@ this test div:
       });
     });
 
+== Defering the Runner
+
+There can be situations where you need additional files to be loaded --
+sometimes asynchronously (for instance [RequireJS](http://requirejs.org/)). If
+you have to defer the execution of the specs until after additional files have
+been loaded you can set
+
+    Evergreen.deferRun = true
+
+And then call `Evergreen.run()` when appropriate.
+
 == Templates
 
 Even more powerful than that, Evergreen allows you to create HTML templates to
