@@ -7,10 +7,15 @@ module Evergreen
     def initialize(suite, name)
       @suite = suite
       @name = name
+      @name = "#{Evergreen.spec_dir}/#{name}" if !exist?
     end
 
     def root
       suite.root
+    end
+
+    def name
+      @name.gsub("/#{Evergreen.spec_dir}/", '')
     end
 
     def full_path

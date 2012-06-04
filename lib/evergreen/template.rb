@@ -7,12 +7,16 @@ module Evergreen
       @name = name
     end
 
+    def name
+      @name.gsub("/#{Evergreen.template_dir}/", '')
+    end
+
     def root
       suite.root
     end
 
     def full_path
-      File.join(root, Evergreen.template_dir, name)
+      File.join(root, @name)
     end
 
     def read
