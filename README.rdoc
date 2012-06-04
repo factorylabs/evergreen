@@ -43,7 +43,7 @@ files should end in _spec.js. For example:
 
 You can require files from the public directory inside your spec file:
 
-    require('/javascripts/widget.js')
+    Evergreen.require('/javascripts/widget.js')
 
     describe('a widget', function() {
       ...
